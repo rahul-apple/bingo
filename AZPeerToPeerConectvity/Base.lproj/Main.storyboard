@@ -6,9 +6,18 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Courier.ttc">
+            <string>Courier</string>
+        </array>
+        <array key="Papyrus.ttc">
+            <string>Papyrus</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -156,6 +165,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZO9-kw-IGF">
+                        <barButtonItem key="leftBarButtonItem" title="Play" id="0Rc-ps-hg1">
+                            <connections>
+                                <segue destination="JPD-TF-HEH" kind="show" id="jQx-sI-pSA"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Connect to Peer" id="SGQ-Oj-2XA">
                             <connections>
                                 <action selector="presentMCBrowser:" destination="BYZ-38-t0r" id="eXD-3e-iEs"/>
@@ -192,6 +206,113 @@
                 </toolbar>
             </objects>
             <point key="canvasLocation" x="668" y="133.5832083958021"/>
+        </scene>
+        <!--Matrix View Controller-->
+        <scene sceneID="Wft-N8-qjW">
+            <objects>
+                <viewController storyboardIdentifier="MatrixViewController" id="JPD-TF-HEH" customClass="MatrixViewController" customModule="AZPeerToPeerConectvity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oey-ak-fmK"/>
+                        <viewControllerLayoutGuide type="bottom" id="C6R-PR-1bm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zYi-LE-2Hs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uyR-7O-iuL">
+                                <rect key="frame" x="10" y="106" width="355" height="355"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uyR-7O-iuL" secondAttribute="height" multiplier="1:1" id="Rgt-Sx-dlK"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="N8Q-hg-hyt">
+                                    <size key="itemSize" width="70" height="70"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MatrixCell" id="Nhd-ht-use" customClass="MatrixViewCell" customModule="AZPeerToPeerConectvity" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pg2-Lt-6e2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBK-lu-V7o">
+                                                    <rect key="frame" x="5" y="5" width="60" height="60"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="VBK-lu-V7o" secondAttribute="bottom" constant="5" id="8GC-1B-f7p"/>
+                                            <constraint firstItem="VBK-lu-V7o" firstAttribute="leading" secondItem="Nhd-ht-use" secondAttribute="leading" constant="5" id="PTv-Ib-UZI"/>
+                                            <constraint firstItem="VBK-lu-V7o" firstAttribute="top" secondItem="Nhd-ht-use" secondAttribute="top" constant="5" id="SRR-Fd-37Z"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pg2-Lt-6e2" secondAttribute="trailing" id="Udn-Pc-oqz"/>
+                                            <constraint firstItem="Pg2-Lt-6e2" firstAttribute="top" secondItem="Nhd-ht-use" secondAttribute="top" id="W7S-jc-7Nb"/>
+                                            <constraint firstAttribute="trailing" secondItem="VBK-lu-V7o" secondAttribute="trailing" constant="5" id="Yee-H4-nPn"/>
+                                            <constraint firstAttribute="bottom" secondItem="Pg2-Lt-6e2" secondAttribute="bottom" id="phh-76-Jmg"/>
+                                            <constraint firstItem="Pg2-Lt-6e2" firstAttribute="leading" secondItem="Nhd-ht-use" secondAttribute="leading" id="uLU-SK-gfT"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="selectionImage" destination="Pg2-Lt-6e2" id="7q2-u2-egZ"/>
+                                            <outlet property="titleLabel" destination="VBK-lu-V7o" id="5Bk-Vb-Zef"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="JPD-TF-HEH" id="aNE-C7-Xzm"/>
+                                    <outlet property="delegate" destination="JPD-TF-HEH" id="cEf-jq-QSO"/>
+                                    <outlet property="prefetchDataSource" destination="JPD-TF-HEH" id="aRA-o9-onY"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uf5-h5-HUK">
+                                <rect key="frame" x="10" y="539" width="355" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="VAl-9r-ISx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfL-3a-RCn">
+                                <rect key="frame" x="10" y="489" width="352" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Rke-7Y-Tjb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uf5-h5-HUK" firstAttribute="top" secondItem="bfL-3a-RCn" secondAttribute="bottom" constant="29" id="2Qf-ax-2RD"/>
+                            <constraint firstAttribute="trailing" secondItem="uf5-h5-HUK" secondAttribute="trailing" constant="10" id="Bsf-Hr-gDt"/>
+                            <constraint firstItem="uyR-7O-iuL" firstAttribute="top" secondItem="oey-ak-fmK" secondAttribute="bottom" constant="42" id="FjY-5G-nXv"/>
+                            <constraint firstAttribute="trailing" secondItem="bfL-3a-RCn" secondAttribute="trailing" constant="13" id="HLF-rr-mQv"/>
+                            <constraint firstAttribute="trailing" secondItem="uyR-7O-iuL" secondAttribute="trailing" constant="10" id="ZjV-R4-ZMV"/>
+                            <constraint firstItem="bfL-3a-RCn" firstAttribute="leading" secondItem="zYi-LE-2Hs" secondAttribute="leading" constant="10" id="hWc-f8-RX6"/>
+                            <constraint firstItem="uf5-h5-HUK" firstAttribute="top" secondItem="uyR-7O-iuL" secondAttribute="bottom" constant="78" id="kSA-7G-QLp"/>
+                            <constraint firstItem="uf5-h5-HUK" firstAttribute="leading" secondItem="zYi-LE-2Hs" secondAttribute="leading" constant="10" id="qbX-aG-45C"/>
+                            <constraint firstItem="uyR-7O-iuL" firstAttribute="leading" secondItem="zYi-LE-2Hs" secondAttribute="leading" constant="10" id="wie-cy-CMk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="uyR-7O-iuL" id="Zhn-05-In0"/>
+                        <outlet property="resultLabel" destination="uf5-h5-HUK" id="Bam-FV-lkV"/>
+                        <outlet property="statusLbl" destination="bfL-3a-RCn" id="NlI-vi-PyV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HkL-qD-7VJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1508" y="133.5832083958021"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hzg-53-uWt">
