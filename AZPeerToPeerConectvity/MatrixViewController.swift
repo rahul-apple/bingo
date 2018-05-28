@@ -75,9 +75,10 @@ class MatrixViewController: UIViewController {
         }
         self.updateResult()
         let totalCompleted = self.completedColoums.count + self.completedRows.count
-        if totalCompleted == Int(itemsPerRow){
+        if totalCompleted >= Int(itemsPerRow){
             connection.sendData(data: ["message": "opponent won!!!"])
             self.showAlertWith(heading: "Won", "You Won")
+            self.navigationController?.popViewController(animated: true)
         }
         
         
@@ -86,9 +87,10 @@ class MatrixViewController: UIViewController {
         let alert = UIAlertController.init(title: heading, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction.init(title: "OK", style: .cancel) { (_) in
             alert.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
         }
         alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
+        self.navigationController?.present(alert, animated: true, completion: nil)
     }
     
     
